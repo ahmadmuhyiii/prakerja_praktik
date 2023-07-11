@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:prakerja_app_muhyi/detail_page.dart';
 import 'package:prakerja_app_muhyi/widgets/home_beverages.dart';
 import 'package:prakerja_app_muhyi/widgets/home_foods.dart';
 import 'package:prakerja_app_muhyi/widgets/menu_list.dart';
 
+import 'menu_model.dart';
+
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+  const MyHomePage({
+    super.key,
+  });
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -343,13 +348,25 @@ Widget buildMenu(BuildContext context) {
           runSpacing: 15,
           children: [
             MenuList(
+              onTap: () {
+                Menu menu = Menu(
+                  imageUrl: 'assets/capucinohot.jpg',
+                  title: 'Capucino Hot',
+                  harga: 'Rp.11000',
+                  jenis: 'coffee',
+                );
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DetailPage(menu: menu),
+                  ),
+                );
+              },
               imageUrl: 'assets/capucinohot.jpg',
               title: 'Capucino Hot',
-              harga: 'Rp.18000',
+              harga: 'Rp.12000',
               jenis: 'coffee',
-              onTap: () {
-                Navigator.pushNamed(context, '/deskripsi');
-              },
             ),
             MenuList(
               imageUrl: 'assets/americano.jpg',
